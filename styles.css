@@ -981,6 +981,12 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+    /* Fix for Cart Page overlapping with fixed header on mobile */
+    .cart-page {
+        padding-top: 8.5rem;
+    }
+
     .cart-container {
         flex-direction: column;
     }
