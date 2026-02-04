@@ -36,7 +36,10 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="header-actions">
-                    <div class="cart-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <div class="cart-icon" onclick="window.location.href='cart.html'">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </div>
                     <a href="#contact" class="btn btn-primary">Get Quote</a>
                 </div>
             </nav>
@@ -107,7 +110,14 @@
                         <p>Large, crunchy fox nuts with natural flavor.</p>
                         <div class="product-footer">
                             <span class="price">₹450/kg</span>
-                            <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            <div class="product-actions">
+                                <button class="add-cart-btn" title="Add to Cart" data-id="p1"
+                                    data-name="Premium Whole Makhana" data-price="450"
+                                    data-image="assets/product-whole.png">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                                <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +133,14 @@
                         <p>Lightly salted, ready to eat snack.</p>
                         <div class="product-footer">
                             <span class="price">₹520/kg</span>
-                            <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            <div class="product-actions">
+                                <button class="add-cart-btn" title="Add to Cart" data-id="p2"
+                                    data-name="Roasted Makhana" data-price="520"
+                                    data-image="assets/product-roasted.png">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                                <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,7 +156,14 @@
                         <p>Assorted flavors - Peri Peri, Cream & Onion.</p>
                         <div class="product-footer">
                             <span class="price">₹580/kg</span>
-                            <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            <div class="product-actions">
+                                <button class="add-cart-btn" title="Add to Cart" data-id="p3"
+                                    data-name="Flavored Makhana Mix" data-price="580"
+                                    data-image="assets/product-flavored.png">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                                <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,7 +179,14 @@
                         <p>Unprocessed, perfect for home cooking.</p>
                         <div class="product-footer">
                             <span class="price">₹600/kg</span>
-                            <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            <div class="product-actions">
+                                <button class="add-cart-btn" title="Add to Cart" data-id="p4"
+                                    data-name="Organic Raw Makhana" data-price="600"
+                                    data-image="assets/product-organic.png">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                                <a href="#" class="view-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -401,6 +432,7 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
