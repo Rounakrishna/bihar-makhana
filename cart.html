@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Bihar Makhana</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">बि</div>
+                    <div class="logo-text">
+                        <span class="brand-name">Bihar Makhana</span>
+                        <span class="brand-subtitle">Export</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="index.html#quality">Quality</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-outline" style="border: none;">Continue Shopping</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart-page">
+        <div class="container">
+            <h1 class="section-title">Your Shopping Cart</h1>
+
+            <div class="cart-container">
+                <div class="cart-items" id="cart-items-container">
+                    <!-- Items will be injected here via JS -->
+                    <div class="empty-cart-msg">
+                        <p>Your cart is empty.</p>
+                        <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Browse Products</a>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="total-price">₹0</span>
+                    </div>
+
+                    <button id="whatsapp-checkout-btn" class="btn btn-primary"
+                        style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background-color: #25D366;">
+                        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                    </button>
+                    <p style="font-size: 0.8rem; color: #777; margin-top: 1rem; text-align: center;">You will be
+                        redirected to WhatsApp to send your order details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified) -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom"
+                style="border-top: none; padding-top: 0; display: flex; justify-content: center;">
+                <p>&copy; 2026 Bihar Makhana Export. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartContainer = document.getElementById('cart-items-container');
+            const subtotalEl = document.getElementById('subtotal');
+            const totalEl = document.getElementById('total-price');
+            const checkoutBtn = document.getElementById('whatsapp-checkout-btn');
+
+            let cart = JSON.parse(localStorage.getItem('biharMakhanaCart')) || [];
+
+            function renderCart() {
+                if (cart.length === 0) {
+                    cartContainer.innerHTML = `
+                        <div class="empty-cart-msg" style="text-align: center; padding: 3rem;">
+                            <i class="fa-solid fa-basket-shopping" style="font-size: 3rem; color: #ddd; margin-bottom: 1rem;"></i>
+                            <p>Your cart is empty.</p>
+                            <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Browse Products</a>
+                        </div>
+                    `;
+                    document.querySelector('.cart-summary').style.display = 'none';
+                    return;
+                }
+
+                document.querySelector('.cart-summary').style.display = 'block';
+                cartContainer.innerHTML = '';
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    total += item.price * item.quantity;
+
+                    const itemEl = document.createElement('div');
+                    itemEl.classList.add('cart-item');
+                    itemEl.innerHTML = `
+                        <div class="item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="item-details">
+                            <h4>${item.name}</h4>
+                            <p class="item-price">₹${item.price} / kg</p>
+                        </div>
+                        <div class="item-actions">
+                            <button onclick="removeItem(${index})" class="remove-btn"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                    cartContainer.appendChild(itemEl);
+                });
+
+                // Update Order Summary with Item Details
+                const summaryRow = document.querySelector('.summary-row span:last-child').parentNode; // Subtotal Row
+                let summaryHTML = '';
+                cart.forEach(item => {
+                    summaryHTML += `
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #555; margin-bottom: 0.5rem;">
+                            <span>${item.name}</span>
+                            <span>₹${item.price}</span>
+                        </div>
+                    `;
+                });
+
+                // Insert items before subtotal
+                const summaryContainer = document.querySelector('.cart-summary');
+                const existingDetails = summaryContainer.querySelector('.summary-details');
+                if (existingDetails) existingDetails.remove();
+
+                const detailsDiv = document.createElement('div');
+                detailsDiv.className = 'summary-details';
+                detailsDiv.style.marginBottom = '1rem';
+                detailsDiv.style.borderBottom = '1px solid #eee';
+                detailsDiv.style.paddingBottom = '0.5rem';
+                detailsDiv.innerHTML = summaryHTML;
+
+                summaryContainer.insertBefore(detailsDiv, summaryContainer.querySelector('.summary-row'));
+
+                subtotalEl.textContent = '₹' + total;
+                totalEl.textContent = '₹' + total;
+            }
+
+            window.removeItem = (index) => {
+                cart.splice(index, 1);
+                localStorage.setItem('biharMakhanaCart', JSON.stringify(cart));
+                location.reload(); // Simple reload to update state
+            };
+
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length === 0) return;
+
+                let message = "Hello, I would like to place an order:%0A%0A";
+                let total = 0;
+
+                cart.forEach(item => {
+                    message += `- ${item.name} (₹${item.price})%0A`;
+                    total += item.price;
+                });
+
+                message += `%0A*Total Amount: ₹${total}*`;
+                message += "%0A%0APlease confirm my order.";
+
+                // Replace with actual business number
+                const phoneNumber = "919876543210";
+                window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            });
+
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>
