@@ -344,22 +344,34 @@
                 <div class="contact-form-container">
                     <h3>Send us a Message</h3>
                     <br>
-                    <form>
+                    <script type="text/javascript">var submitted = false;</script>
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+                        onload="if(submitted) {window.location='index.html';}"></iframe>
+                    <form action="https://formsubmit.co/krishnakumarqaz0@gmail.com" method="POST" target="hidden_iframe"
+                        onsubmit="submitted=true;">
+                        <!-- Configuration -->
+                        <input type="hidden" name="_subject" value="New Inquiry from Bihar Makhana Website">
+                        <!-- <input type="hidden" name="_next" value="https://biharmakhana.com/index.html"> -->
+                        <!-- Commented out _next because the domain doesn't exist yet. FormSubmit will show a default success page. -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" placeholder="John Doe">
+                            <input type="text" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" placeholder="john@example.com">
+                            <input type="email" name="email" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="tel" placeholder="+91 98765 43210">
+                            <input type="tel" name="phone" placeholder="+91 98765 43210" required>
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea rows="4" placeholder="Tell us about your requirements..."></textarea>
+                            <textarea rows="4" name="message" placeholder="Tell us about your requirements..."
+                                required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message <i
                                 class="fa-solid fa-paper-plane"></i></button>
