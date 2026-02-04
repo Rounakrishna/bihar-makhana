@@ -110,11 +110,14 @@ h6 {
     color: var(--white);
 }
 
-/* Header */
+/* Header: Fixed is more reliable than sticky for mobile navbars */
 header {
     padding: 1rem 0;
-    position: sticky;
+    position: fixed;
+    /* Changed to fixed for absolute persistence */
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
     background-color: var(--white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -224,8 +227,8 @@ nav {
 
 /* Hero Section */
 .hero {
-    padding-top: 4rem;
-    /* Reduced padding since header is sticky/white now */
+    padding-top: 8.5rem;
+    /* Increased for fixed header clearing on Desktop */
     padding-bottom: 4rem;
     display: flex;
     align-items: center;
@@ -784,10 +787,22 @@ footer {
 }
 
 /* Responsive */
+
+/* Hamburger Menu Text - Hidden by default (Desktop) */
+.hamburger {
+    display: none;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================= */
+
+/* Tablet (968px and below) */
 @media (max-width: 968px) {
     .hero {
         flex-direction: column;
-        padding-top: 6rem;
+        padding-top: 8rem;
+        /* Increased to account for fixed header */
     }
 
     .hero-title {
@@ -825,6 +840,25 @@ footer {
 
     .cta-banner {
         padding: 2rem;
+    }
+
+    .hamburger {
+        display: block;
+        /* Show on mobile */
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    /* Hide desktop header actions on mobile to prevent crowding */
+    .header-actions .btn {
+        display: none;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 }
 
