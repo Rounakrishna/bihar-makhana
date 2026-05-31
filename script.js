@@ -1,6 +1,8 @@
 import { addToCart, getCartCount, getCart, isProductInCart } from "./cart-utils.js";
 import { getCartRoute, getProductById, getProductRoute } from "./products.js";
 
+const THEME_STORAGE_KEY = "biharMakhanaTheme";
+
 export function getRootPath() {
     return document.body?.dataset.rootPath || "";
 }
@@ -36,6 +38,81 @@ export function showToast(message) {
         toast.classList.remove("show");
         window.setTimeout(() => toast.remove(), 250);
     }, 2600);
+}
+
+function getPreferredTheme() {
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    if (savedTheme === "dark" || savedTheme === "light") {
+        return savedTheme;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+    document.body.classList.toggle("dark-mode", theme === "dark");
+    document.body.dataset.theme = theme;
+
+    const themeToggle = document.querySelector(".theme-toggle");
+    if (themeToggle) {
+        themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+        themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+
+        const icon = themeToggle.querySelector("i");
+        if (icon) {
+            icon.className = theme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+        }
+    }
+}
+
+function initializeThemeToggle() {
+    const headerActions = document.querySelector(".header-actions");
+    if (!headerActions) return;
+
+    let themeToggle = headerActions.querySelector(".theme-toggle");
+
+    if (!themeToggle) {
+        themeToggle = document.createElement("button");
+        themeToggle.type = "button";
+        themeToggle.className = "theme-toggle";
+        themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+
+        const hamburger = headerActions.querySelector(".hamburger");
+        if (hamburger) {
+            headerActions.insertBefore(themeToggle, hamburger);
+        } else {
+            headerActions.appendChild(themeToggle);
+        }
+    }
+
+    const setTheme = (theme) => {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+        applyTheme(theme);
+    };
+
+    themeToggle.addEventListener("click", () => {
+        const nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+        setTheme(nextTheme);
+    });
+
+    themeToggle.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            const nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+            setTheme(nextTheme);
+        }
+    });
+
+    applyTheme(getPreferredTheme());
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    if (typeof mediaQuery.addEventListener === "function") {
+        mediaQuery.addEventListener("change", (event) => {
+            if (!localStorage.getItem(THEME_STORAGE_KEY)) {
+                applyTheme(event.matches ? "dark" : "light");
+            }
+        });
+    }
 }
 
 function handleCartLinkAccessibility(rootPath) {
@@ -196,6 +273,7 @@ function enhanceProductCards() {
 
 export function initSharedSite() {
     const rootPath = getRootPath();
+    initializeThemeToggle();
     handleCartLinkAccessibility(rootPath);
     initializeMobileNav();
     updateCartBadges();
