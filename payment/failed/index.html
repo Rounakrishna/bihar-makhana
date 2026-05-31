@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed - Bihar Makhana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body data-root-path="../../" data-page="payment-result" data-payment-result="failed" data-api-base-url="">
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">&#2348;&#2367;</div>
+                    <div class="logo-text">
+                        <span class="brand-name">Bihar Makhana</span>
+                        <span class="brand-subtitle">Export</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../../index.html#products">Products</a></li>
+                    <li><a href="../../index.html#quality">Quality</a></li>
+                    <li><a href="../../index.html#about">About</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
+                </ul>
+                <div class="header-actions">
+                    <div class="cart-icon" aria-label="Open cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="payment-result-page">
+        <div class="container">
+            <section class="payment-result-card">
+                <div class="payment-result-icon error">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <h1>Payment Failed</h1>
+                <p>Your cart has been kept intact. You can retry the payment anytime.</p>
+                <div id="payment-detail-list" class="payment-detail-list"></div>
+                <div class="payment-result-actions">
+                    <a id="retry-payment-btn" class="btn btn-primary" href="../../cart.html">Retry Payment</a>
+                    <a id="return-cart-btn" class="btn btn-outline" href="../../cart.html">Return To Cart</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="../../payment-result.js"></script>
+</body>
+
+</html>

@@ -117,3 +117,7 @@ export function removeCartItemByIndex(index) {
     saveCart(cart);
     return cart;
 }
+
+export function clearCart() {
+    saveCart([]);
+}
