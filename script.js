@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-cart-btn');
     const cartCountElement = document.querySelector('.cart-count');
+    const cartLinks = document.querySelectorAll('.cart-icon');
 
     // Initialize cart from localStorage
     let cart = JSON.parse(localStorage.getItem('biharMakhanaCart')) || [];
@@ -43,11 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCartCount();
 
                 // Visual Feedback
-                cartCountElement.classList.add('bump');
+                if (cartCountElement) {
+                    cartCountElement.classList.add('bump');
+                }
                 markButtonAsAdded(button);
 
                 setTimeout(() => {
-                    cartCountElement.classList.remove('bump');
+                    if (cartCountElement) {
+                        cartCountElement.classList.remove('bump');
+                    }
                 }, 300);
             }
         });
@@ -58,6 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
             cartCountElement.textContent = cart.length;
         }
     }
+
+    cartLinks.forEach((cartLink) => {
+        cartLink.setAttribute('role', 'link');
+        cartLink.setAttribute('tabindex', '0');
+        cartLink.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                window.location.href = 'cart.html';
+            }
+        });
+    });
 
     function markButtonAsAdded(button) {
         button.innerHTML = '<i class="fa-solid fa-check"></i>';
@@ -88,17 +104,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active'); // Optional: for X animation
+        const closeMenu = () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
+        };
+
+        const toggleMenu = () => {
+            const willOpen = !navLinks.classList.contains('active');
+            navLinks.classList.toggle('active', willOpen);
+            hamburger.classList.toggle('active', willOpen);
+            hamburger.setAttribute('aria-expanded', String(willOpen));
+            document.body.classList.toggle('menu-open', willOpen);
+        };
+
+        hamburger.setAttribute('role', 'button');
+        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleMenu();
+            }
         });
 
-        // Close menu when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
         });
     }
 });

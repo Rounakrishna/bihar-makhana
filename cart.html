@@ -23,7 +23,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <div class="logo-icon">बि</div>
+                    <div class="logo-icon">&#2348;&#2367;</div>
                     <div class="logo-text">
                         <span class="brand-name">Bihar Makhana</span>
                         <span class="brand-subtitle">Export</span>
@@ -36,7 +36,10 @@
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="header-actions">
-                    <a href="index.html" class="btn btn-outline" style="border: none;">Continue Shopping</a>
+                    <a href="index.html" class="btn btn-outline continue-shopping-btn" style="border: none;">Continue Shopping</a>
+                    <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -92,6 +95,7 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cartContainer = document.getElementById('cart-items-container');
@@ -132,7 +136,7 @@
                             <p class="item-price">₹${item.price} / kg</p>
                         </div>
                         <div class="item-actions">
-                            <button onclick="removeItem(${index})" class="remove-btn"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="remove-btn" data-remove-index="${index}" aria-label="Remove ${item.name} from cart"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     `;
                     cartContainer.appendChild(itemEl);
@@ -168,11 +172,17 @@
                 totalEl.textContent = '₹' + total;
             }
 
-            window.removeItem = (index) => {
+            cartContainer.addEventListener('click', (event) => {
+                const removeButton = event.target.closest('[data-remove-index]');
+                if (!removeButton) return;
+
+                const index = Number(removeButton.getAttribute('data-remove-index'));
+                if (Number.isNaN(index)) return;
+
                 cart.splice(index, 1);
                 localStorage.setItem('biharMakhanaCart', JSON.stringify(cart));
-                location.reload(); // Simple reload to update state
-            };
+                renderCart();
+            });
 
             checkoutBtn.addEventListener('click', () => {
                 if (cart.length === 0) return;
