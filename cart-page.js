@@ -38,7 +38,7 @@ function renderCartPage() {
             </div>
             <div class="item-details">
                 <h4>${item.name}</h4>
-                <p class="item-price">₹${item.price} / kg</p>
+                <p class="item-price">₹${item.price} /gram</p>
                 <p class="item-quantity">Quantity: ${item.quantity}</p>
             </div>
             <div class="item-actions">

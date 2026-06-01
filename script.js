@@ -299,7 +299,7 @@ export function createRelatedProductCard(product, rootPath) {
                 <h3>${product.name}</h3>
                 <p>${product.shortDescription}</p>
                 <div class="product-footer">
-                    <span class="price">₹${product.price}/kg</span>
+                    <span class="price">₹${product.price}/gram</span>
                     <div class="product-actions">
                         <button class="add-cart-btn${isAdded ? " added" : ""}" type="button" title="Add to Cart">
                             <i class="fa-solid ${isAdded ? "fa-check" : "fa-cart-shopping"}"></i>

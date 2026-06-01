@@ -187,7 +187,7 @@ function buildProductPage(product, rootPath) {
                         </div>
 
                         <div class="pdp-price-row">
-                            <span class="pdp-price">${formatCurrency(product.price)}/kg</span>
+                            <span class="pdp-price">${formatCurrency(product.price)}/gram</span>
                             <span class="pdp-stock-note">${product.stock} units available</span>
                         </div>
 
