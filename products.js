@@ -2,277 +2,269 @@ export const products = [
     {
         id: "1",
         legacyId: "p1",
-        name: "Premium Whole Makhana",
-        shortName: "Whole Makhana",
-        type: "Whole Makhana",
-        price: 450,
-        rating: 4.8,
-        reviewCount: 128,
-        stock: 18,
-        badge: "Best Seller",
-        shortDescription: "Large, crunchy fox nuts sourced from premium Bihar wetlands and sorted for export-grade consistency.",
+        name: "Bihar Makhana 250g Pack",
+        shortName: "250g Pack",
+        type: "Fresh Bihar Makhana",
+        price: 399,
+        packSize: "250g",
+        packWeightGrams: 250,
+        rating: null,
+        reviewCount: 0,
+        stock: 50,
+        badge: "Starter Pack",
+        shortDescription: "Fresh Bihar makhana in a handy 250g pouch for daily snacking and first-time orders.",
         description: [
-            "Premium Whole Makhana is carefully harvested from Bihar’s fertile wetlands and gently processed to retain its signature crunch, light texture, and clean natural taste.",
-            "Every batch is sorted for size, colour, and consistency, making it ideal for retail shelves, healthy snacking, roasting, and bulk export supply."
+            "This 250g pack is a simple way to enjoy fresh Bihar makhana at home. It is easy to store, easy to serve, and works well for regular snacking.",
+            "The sealed pouch keeps the product ready for direct use, whether you want a light snack, a fasting-friendly option, or a clean ingredient for home recipes."
         ],
         benefits: [
-            "Naturally light and easy to digest",
-            "Rich in plant-based nutrients and fiber",
-            "Suitable for daily healthy snacking",
-            "Export-ready grading with consistent quality"
+            "Convenient pack size for personal or trial orders",
+            "Fresh makhana packed in a sealed retail pouch",
+            "Good option for snacking, roasting, or light cooking",
+            "Easy to carry and store at home"
         ],
         usage: [
-            "Roast lightly with ghee and seasoning for a healthy snack",
-            "Use in makhana curry, kheer, trail mixes, and granola",
-            "Ideal for packaged retail, gifting, and institutional supply"
+            "Enjoy straight from the pack as a light snack",
+            "Roast lightly with ghee, salt, or spices",
+            "Use in kheer, curry, or fasting recipes"
         ],
         storage: [
-            "Store in a cool, dry place away from moisture",
-            "Keep sealed after opening to preserve crispness",
-            "Use an airtight container for extended freshness"
+            "Store in a cool and dry place",
+            "Keep the pouch sealed after opening",
+            "Transfer to an airtight container for longer freshness"
         ],
         specifications: {
-            "Product Type": "Whole Makhana",
-            Origin: "Bihar",
-            Grade: "Export Quality",
-            "Shelf Life": "12 Months",
-            Packaging: "Vacuum Packed"
+            "Product Type": "Fresh Bihar Makhana",
+            "Pack Size": "250g",
+            Origin: "Muzaffarpur, Bihar",
+            Packaging: "Sealed pouch",
+            "Best For": "Daily snacking and trial orders"
         },
-        nutrition: {
-            Protein: "9.7g",
-            Carbs: "76.9g",
-            Fat: "0.1g",
-            Fiber: "14.5g"
+        packDetails: {
+            Ingredients: "100% makhana",
+            "Pack Format": "Single retail pouch",
+            Delivery: "Doorstep delivery available",
+            Offer: "Use code WELCOME10 on your first order"
         },
         shipping: [
-            "Dispatch within 24-48 hours for domestic orders",
-            "Bulk export shipments are vacuum packed and moisture protected",
-            "Transit timeline varies by destination and order volume",
-            "Returns accepted for transit damage or wrong shipment only"
+            "Doorstep delivery available on direct orders",
+            "Free delivery on orders of 1kg and above",
+            "No platform fees added at checkout",
+            "Packed carefully to help preserve freshness in transit"
         ],
         features: [
-            { icon: "fa-award", label: "Export Quality" },
-            { icon: "fa-certificate", label: "Premium Grade" },
-            { icon: "fa-leaf", label: "100% Natural" },
-            { icon: "fa-dumbbell", label: "Rich In Protein" },
-            { icon: "fa-droplet", label: "Low Fat" },
-            { icon: "fa-wheat-awn-circle-exclamation", label: "Gluten Free" },
-            { icon: "fa-box", label: "Hygienically Packed" },
-            { icon: "fa-seedling", label: "Farm Fresh" }
+            { icon: "fa-bowl-food", label: "Everyday Snacking" },
+            { icon: "fa-leaf", label: "Simple Ingredients" },
+            { icon: "fa-box", label: "Sealed Pack" },
+            { icon: "fa-seedling", label: "Fresh Bihar Makhana" }
         ],
-        image: "assets/product-whole.png",
+        image: "assets/makhana-pack-front.jpeg",
         gallery: [
-            "assets/product-whole.png",
-            "assets/about-harvest.png",
-            "assets/about-wetlands.png",
-            "assets/about-farmers.png"
+            "assets/makhana-pack-front.jpeg",
+            "assets/makhana-pack-bowls.jpeg",
+            "assets/makhana-pack-studio.jpeg",
+            "assets/makhana-brand-duo.png"
         ]
     },
     {
         id: "2",
         legacyId: "p2",
-        name: "Roasted Makhana",
-        shortName: "Roasted Makhana",
-        type: "Roasted Makhana",
-        price: 520,
-        rating: 4.7,
-        reviewCount: 94,
-        stock: 15,
-        badge: "Popular",
-        shortDescription: "Lightly salted roasted makhana with crisp texture, ready-to-eat convenience, and reliable premium sourcing.",
+        name: "Bihar Makhana 500g Pack",
+        shortName: "500g Pack",
+        type: "Fresh Bihar Makhana",
+        price: 749,
+        packSize: "500g",
+        packWeightGrams: 500,
+        rating: null,
+        reviewCount: 0,
+        stock: 50,
+        badge: "Value Pack",
+        shortDescription: "A 500g value pack for regular snacking, small families, and repeat buyers.",
         description: [
-            "Our Roasted Makhana is crafted for snack-ready enjoyment with a clean roasted finish and balanced seasoning that enhances the natural nutty character.",
-            "It is packed to retain crunch and freshness, making it a strong choice for both direct consumption and premium retail distribution."
+            "The 500g pack offers a balanced option for homes that go through makhana more often. It is a practical step up from the starter pack without becoming bulky to store.",
+            "This pack works well for frequent tea-time snacking, fasting days, and families who prefer keeping a fresh pouch ready in the kitchen."
         ],
         benefits: [
-            "Ready-to-eat snack format",
-            "Clean roasted flavour with satisfying crunch",
-            "Convenient for travel, office, and retail packs",
-            "Premium quality sourced and packed hygienically"
+            "Good value for regular household use",
+            "Suitable for repeat buyers who want a larger pack",
+            "Fresh pouch format that is easy to handle and store",
+            "Works for both direct snacking and recipes"
         ],
         usage: [
-            "Serve as a healthy tea-time snack",
-            "Include in curated snack hampers or subscription boxes",
-            "Pair with nuts and seeds for trail mixes"
+            "Serve as an evening or tea-time snack",
+            "Roast with spices for a homemade snack mix",
+            "Use across multiple home servings during the week"
         ],
         storage: [
-            "Keep in a dry, airtight container after opening",
-            "Avoid direct sunlight and high humidity",
-            "Consume promptly after opening for best texture"
+            "Store away from moisture and direct sunlight",
+            "Seal properly after each use",
+            "Keep in an airtight jar after opening if preferred"
         ],
         specifications: {
-            "Product Type": "Roasted Makhana",
-            Origin: "Bihar",
-            Grade: "Premium Snack Grade",
-            "Shelf Life": "9 Months",
-            Packaging: "Nitrogen Flushed Pouch"
+            "Product Type": "Fresh Bihar Makhana",
+            "Pack Size": "500g",
+            Origin: "Muzaffarpur, Bihar",
+            Packaging: "Sealed pouch",
+            "Best For": "Regular home use"
         },
-        nutrition: {
-            Protein: "9.4g",
-            Carbs: "73.8g",
-            Fat: "1.5g",
-            Fiber: "13.8g"
+        packDetails: {
+            Ingredients: "100% makhana",
+            "Pack Format": "Value-size pouch",
+            Delivery: "Doorstep delivery available",
+            Offer: "Use code WELCOME10 on your first order"
         },
         shipping: [
-            "Fast dispatch for retail-friendly packaging",
-            "Protective secondary packing for transit safety",
-            "Ideal for domestic and export-ready snack shipments",
-            "Quality concerns handled through support verification"
+            "Doorstep delivery available on direct orders",
+            "Free delivery on orders of 1kg and above",
+            "No platform fees added at checkout",
+            "Packed carefully to help preserve freshness in transit"
         ],
         features: [
-            { icon: "fa-award", label: "Export Quality" },
-            { icon: "fa-certificate", label: "Premium Grade" },
-            { icon: "fa-leaf", label: "100% Natural" },
-            { icon: "fa-fire-flame-curved", label: "Perfectly Roasted" },
-            { icon: "fa-droplet", label: "Low Fat" },
-            { icon: "fa-heart-pulse", label: "Healthy Snacking" },
-            { icon: "fa-box", label: "Hygienically Packed" },
-            { icon: "fa-truck-fast", label: "Retail Ready" }
+            { icon: "fa-scale-balanced", label: "Better Value" },
+            { icon: "fa-house", label: "Home Friendly" },
+            { icon: "fa-box", label: "Sealed Pack" },
+            { icon: "fa-leaf", label: "Fresh Bihar Makhana" }
         ],
-        image: "assets/product-roasted.png",
+        image: "assets/makhana-2pack.jpeg",
         gallery: [
-            "assets/product-roasted.png",
-            "assets/about-farmers.png",
-            "assets/about-harvest.png",
-            "assets/hero-bg.png"
+            "assets/makhana-2pack.jpeg",
+            "assets/makhana-pack-bowls.jpeg",
+            "assets/makhana-pack-front.jpeg",
+            "assets/makhana-brand-duo.png"
         ]
     },
     {
         id: "3",
         legacyId: "p3",
-        name: "Flavored Makhana Mix",
-        shortName: "Flavored Mix",
-        type: "Flavored Makhana",
-        price: 580,
-        rating: 4.9,
-        reviewCount: 76,
-        stock: 12,
-        badge: "New",
-        shortDescription: "A premium flavored assortment featuring bold snack profiles like peri peri and cream & onion.",
+        name: "Bihar Makhana 1kg Family Pack",
+        shortName: "1kg Pack",
+        type: "Fresh Bihar Makhana",
+        price: 1399,
+        packSize: "1kg",
+        packWeightGrams: 1000,
+        rating: null,
+        reviewCount: 0,
+        stock: 40,
+        badge: "Family Pack",
+        shortDescription: "Four fresh 250g packs in a premium 1kg setup for family use, gifting, and repeat orders.",
         description: [
-            "Flavored Makhana Mix combines premium fox nuts with contemporary seasoning profiles to create a snack that feels both healthy and indulgent.",
-            "Designed for modern consumers, it delivers a premium bite, eye-catching presentation, and versatile retail appeal."
+            "This 1kg family pack is presented as four fresh 250g packs, making it feel premium while still being practical for home storage and serving.",
+            "It is a strong choice for family use, gifting, and buyers who want the benefit of a larger order without opening one oversized pouch at once."
         ],
         benefits: [
-            "Contemporary flavours for wider appeal",
-            "Premium snacking option with clean crunch",
-            "Great for gifting and modern retail displays",
-            "Balanced taste with premium ingredient base"
+            "4 fresh packs with a total weight of 1kg",
+            "Looks more premium than a single large pouch",
+            "Useful for family use, gifting, or stocking up",
+            "Qualifies for free delivery"
         ],
         usage: [
-            "Serve as a premium packaged snack",
-            "Include in festive hampers or curated snack boxes",
-            "Pair with beverages for cafe or lounge menus"
+            "Keep one pouch open and store the rest sealed",
+            "Use for family snacking over multiple days",
+            "Share as a premium food gift pack"
         ],
         storage: [
-            "Seal immediately after opening",
-            "Store in a cool and dry area",
-            "Avoid prolonged exposure to air for best crispness"
+            "Open one pouch at a time for better freshness",
+            "Store unopened packs in a cool, dry place",
+            "Keep opened pouches sealed between uses"
         ],
         specifications: {
-            "Product Type": "Flavored Makhana Mix",
-            Origin: "Bihar",
-            Grade: "Premium Seasoned Grade",
-            "Shelf Life": "9 Months",
-            Packaging: "Resealable Premium Pouch"
+            "Product Type": "Fresh Bihar Makhana",
+            "Pack Size": "1kg total",
+            "Pack Format": "4 x 250g packs",
+            Origin: "Muzaffarpur, Bihar",
+            "Best For": "Family use and gifting"
         },
-        nutrition: {
-            Protein: "9.1g",
-            Carbs: "72.4g",
-            Fat: "2.2g",
-            Fiber: "13.1g"
+        packDetails: {
+            Ingredients: "100% makhana",
+            "Pack Format": "4 fresh packs of 250g each",
+            Delivery: "Free delivery included",
+            Offer: "Use code WELCOME10 on your first order"
         },
         shipping: [
-            "Packed securely to preserve flavor and crunch",
-            "Suitable for D2C, retail, and export snack channels",
-            "Delivery schedule depends on pack size and destination",
-            "Support available for shipment and order assistance"
+            "Free delivery included on this pack",
+            "No platform fees added at checkout",
+            "Packed as multiple sealed pouches for convenience",
+            "Suitable for family orders and gifting"
         ],
         features: [
-            { icon: "fa-award", label: "Export Quality" },
-            { icon: "fa-certificate", label: "Premium Grade" },
-            { icon: "fa-leaf", label: "100% Natural" },
-            { icon: "fa-pepper-hot", label: "Bold Flavours" },
-            { icon: "fa-face-smile", label: "Snack Friendly" },
-            { icon: "fa-droplet", label: "Low Fat" },
-            { icon: "fa-box", label: "Hygienically Packed" },
-            { icon: "fa-star", label: "High Demand" }
+            { icon: "fa-gift", label: "Gifting Friendly" },
+            { icon: "fa-people-group", label: "Family Size" },
+            { icon: "fa-truck", label: "Free Delivery" },
+            { icon: "fa-box-open", label: "4 Fresh Packs" }
         ],
-        image: "assets/product-flavored.png",
+        image: "assets/makhana-4pack.jpeg",
         gallery: [
-            "assets/product-flavored.png",
-            "assets/about-harvest.png",
-            "assets/about-wetlands.png",
-            "assets/hero-bg.png"
+            "assets/makhana-4pack.jpeg",
+            "assets/makhana-3pack.jpeg",
+            "assets/makhana-pack-bowls.jpeg",
+            "assets/makhana-pack-front.jpeg"
         ]
     },
     {
         id: "4",
         legacyId: "p4",
-        name: "Organic Raw Makhana",
-        shortName: "Organic Raw",
-        type: "Raw Makhana",
-        price: 600,
-        rating: 4.8,
-        reviewCount: 63,
-        stock: 10,
-        badge: "Organic",
-        shortDescription: "Naturally processed raw makhana suited for home cooking, specialty retail, and premium export applications.",
+        name: "Bihar Makhana 2kg Combo",
+        shortName: "2kg Combo",
+        type: "Fresh Bihar Makhana",
+        price: 2699,
+        packSize: "2kg",
+        packWeightGrams: 2000,
+        rating: null,
+        reviewCount: 0,
+        stock: 30,
+        badge: "Combo Pack",
+        shortDescription: "A 2kg combo for larger family orders, repeat buyers, and stocking up with better value.",
         description: [
-            "Organic Raw Makhana is minimally processed to preserve its natural quality, making it ideal for buyers who prefer full control over roasting, seasoning, or culinary preparation.",
-            "It offers dependable size, purity, and moisture control for both retail and bulk supply needs."
+            "The 2kg combo is meant for buyers who want a larger order ready at home. It works well for bigger households, shared family use, and customers who prefer ordering less often.",
+            "With free delivery and a stronger value than smaller packs, it is a practical option for customers who already know they want to stock up."
         ],
         benefits: [
-            "Naturally processed for versatile use",
-            "Suitable for home roasting and cooking",
-            "Preferred by buyers seeking minimal processing",
-            "Premium sourcing with export-ready consistency"
+            "Larger combo pack for repeat and shared use",
+            "Suitable for family stocking and bigger monthly orders",
+            "Free delivery included",
+            "Stronger value compared with smaller packs"
         ],
         usage: [
-            "Roast and season as needed",
-            "Use in curries, desserts, and fasting recipes",
-            "Ideal for bulk buyers and custom repacking"
+            "Plan pantry stock for longer use",
+            "Split across family members if needed",
+            "Keep sealed packs stored and open as required"
         ],
         storage: [
-            "Keep moisture away at all times",
-            "Store in sealed food-grade packaging",
-            "Use clean, dry scoops during handling"
+            "Store sealed packs in a cool, dry place",
+            "Open only the pouch you need",
+            "Avoid moisture exposure after opening"
         ],
         specifications: {
-            "Product Type": "Raw Makhana",
-            Origin: "Bihar",
-            Grade: "Organic Premium Grade",
-            "Shelf Life": "12 Months",
-            Packaging: "Vacuum Packed"
+            "Product Type": "Fresh Bihar Makhana",
+            "Pack Size": "2kg total",
+            Origin: "Muzaffarpur, Bihar",
+            Packaging: "Sealed combo packs",
+            "Best For": "Large family and repeat orders"
         },
-        nutrition: {
-            Protein: "9.8g",
-            Carbs: "77.2g",
-            Fat: "0.2g",
-            Fiber: "14.7g"
+        packDetails: {
+            Ingredients: "100% makhana",
+            "Pack Format": "Combo pack",
+            Delivery: "Free delivery included",
+            Offer: "Use code WELCOME10 on your first order"
         },
         shipping: [
-            "Best suited for moisture-safe bulk packaging",
-            "Available for domestic and export fulfillment",
-            "Dispatch depends on order volume and packing requirements",
-            "Return support available for verified delivery issues"
+            "Free delivery included on this combo",
+            "No platform fees added at checkout",
+            "Packed carefully for home delivery",
+            "Useful for larger household and repeat orders"
         ],
         features: [
-            { icon: "fa-award", label: "Export Quality" },
-            { icon: "fa-certificate", label: "Premium Grade" },
-            { icon: "fa-leaf", label: "100% Natural" },
-            { icon: "fa-seedling", label: "Organic Sourced" },
-            { icon: "fa-droplet", label: "Low Fat" },
-            { icon: "fa-kitchen-set", label: "Cooking Friendly" },
-            { icon: "fa-box", label: "Hygienically Packed" },
-            { icon: "fa-hand-holding-heart", label: "Farm Fresh" }
+            { icon: "fa-layer-group", label: "Combo Savings" },
+            { icon: "fa-house-user", label: "Larger Order" },
+            { icon: "fa-truck", label: "Free Delivery" },
+            { icon: "fa-boxes-stacked", label: "Stock Up Easily" }
         ],
-        image: "assets/product-organic.png",
+        image: "assets/makhana-brand-duo.png",
         gallery: [
-            "assets/product-organic.png",
-            "assets/about-wetlands.png",
-            "assets/about-farmers.png",
-            "assets/about-harvest.png"
+            "assets/makhana-brand-duo.png",
+            "assets/makhana-4pack.jpeg",
+            "assets/makhana-pack-studio.jpeg",
+            "assets/makhana-pack-bowls.jpeg"
         ]
     }
 ];
@@ -310,7 +302,7 @@ export function getRelatedProducts(productId) {
 }
 
 export function formatCurrency(value) {
-    return `₹${Number(value).toLocaleString("en-IN")}`;
+    return `Rs. ${Number(value).toLocaleString("en-IN")}`;
 }
 
 export function resolveAsset(rootPath, assetPath) {

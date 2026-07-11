@@ -1,5 +1,5 @@
 import { getCart, getCartTotal, removeCartItemByIndex } from "./cart-utils.js";
-import { getHomeRoute } from "./products.js";
+import { formatCurrency, getHomeRoute } from "./products.js";
 import { initSharedSite } from "./script.js";
 
 function renderCartPage() {
@@ -38,7 +38,7 @@ function renderCartPage() {
             </div>
             <div class="item-details">
                 <h4>${item.name}</h4>
-                <p class="item-price">₹${item.price} /gram</p>
+                <p class="item-price">${formatCurrency(item.price)} each</p>
                 <p class="item-quantity">Quantity: ${item.quantity}</p>
             </div>
             <div class="item-actions">
@@ -54,8 +54,8 @@ function renderCartPage() {
         .map(
             (item) => `
                 <div class="summary-line-item">
-                    <span>${item.name} × ${item.quantity}</span>
-                    <span>₹${item.price * item.quantity}</span>
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>${formatCurrency(item.price * item.quantity)}</span>
                 </div>
             `
         )
@@ -70,8 +70,8 @@ function renderCartPage() {
     summaryPanel.insertBefore(summaryDetails, summaryPanel.querySelector(".summary-row"));
 
     const total = getCartTotal(cart);
-    subtotalElement.textContent = `₹${total}`;
-    totalElement.textContent = `₹${total}`;
+    subtotalElement.textContent = formatCurrency(total);
+    totalElement.textContent = formatCurrency(total);
 
     cartContainer.addEventListener("click", (event) => {
         const removeButton = event.target.closest("[data-remove-index]");
@@ -86,14 +86,14 @@ function renderCartPage() {
         const activeCart = getCart();
         if (activeCart.length === 0) return;
 
-        let message = "Hello, I would like to place an order:%0A%0A";
+        let message = "Hello, I would like to place an order:\n\n";
         activeCart.forEach((item) => {
-            message += `- ${item.name} (₹${item.price} × ${item.quantity})%0A`;
+            message += `- ${item.name} (${formatCurrency(item.price)} x ${item.quantity})\n`;
         });
-        message += `%0A*Total Amount: ₹${getCartTotal(activeCart)}*`;
-        message += "%0A%0APlease confirm my order.";
+        message += `\n*Total Amount: ${formatCurrency(getCartTotal(activeCart))}*`;
+        message += "\n\nPlease confirm my order.";
 
-        window.open(`https://wa.me/919123180251?text=${message}`, "_blank");
+        window.open(`https://wa.me/919728980251?text=${encodeURIComponent(message)}`, "_blank");
     }, { once: true });
 }
 

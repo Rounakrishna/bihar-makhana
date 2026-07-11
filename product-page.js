@@ -115,11 +115,11 @@ function buildProductPage(product, rootPath) {
         </div>
     `;
 
-    const nutritionContent = `
+    const packDetailsContent = `
         <div class="pdp-table-wrap">
             <table class="pdp-data-table">
                 <tbody>
-                    ${Object.entries(product.nutrition)
+                    ${Object.entries(product.packDetails)
         .map(
             ([label, value]) => `
                                 <tr>
@@ -143,6 +143,17 @@ function buildProductPage(product, rootPath) {
     const relatedProductsMarkup = getRelatedProducts(product.id)
         .map((relatedProduct) => createRelatedProductCard(relatedProduct, rootPath))
         .join("");
+
+    const hasReviews = Number.isFinite(product.rating) && product.reviewCount > 0;
+    const ratingMarkup = hasReviews
+        ? `
+                        <div class="pdp-rating-row">
+                            <div class="pdp-stars">${buildStars(product.rating)}</div>
+                            <strong>${product.rating.toFixed(1)}</strong>
+                            <span>(${product.reviewCount} reviews)</span>
+                        </div>
+                    `
+        : "";
 
     return `
         <section class="pdp-breadcrumb">
@@ -180,15 +191,11 @@ function buildProductPage(product, rootPath) {
 
                         <h1 class="pdp-title">${product.name}</h1>
 
-                        <div class="pdp-rating-row">
-                            <div class="pdp-stars">${buildStars(product.rating)}</div>
-                            <strong>${product.rating.toFixed(1)}</strong>
-                            <span>(${product.reviewCount} reviews)</span>
-                        </div>
+                        ${ratingMarkup}
 
                         <div class="pdp-price-row">
-                            <span class="pdp-price">${formatCurrency(product.price)}/gram</span>
-                            <span class="pdp-stock-note">${product.stock} units available</span>
+                            <span class="pdp-price">${formatCurrency(product.price)}</span>
+                            <span class="pdp-stock-note">Pack size: ${product.packSize}</span>
                         </div>
 
                         <p class="pdp-short-description">${product.shortDescription}</p>
@@ -223,13 +230,13 @@ function buildProductPage(product, rootPath) {
                     <div class="pdp-tab-buttons" role="tablist" aria-label="Product information">
                         <button type="button" class="pdp-tab-btn active" data-tab-target="description">Description</button>
                         <button type="button" class="pdp-tab-btn" data-tab-target="specifications">Specifications</button>
-                        <button type="button" class="pdp-tab-btn" data-tab-target="nutrition">Nutritional Information</button>
+                        <button type="button" class="pdp-tab-btn" data-tab-target="pack-details">Pack Details</button>
                         <button type="button" class="pdp-tab-btn" data-tab-target="shipping">Shipping & Delivery</button>
                     </div>
                     <div class="pdp-tab-content">
                         ${buildTabPanel("description", "Product Overview", descriptionContent)}
                         ${buildTabPanel("specifications", "Specifications", specificationsContent)}
-                        ${buildTabPanel("nutrition", "Nutritional Information", nutritionContent)}
+                        ${buildTabPanel("pack-details", "Pack Details", packDetailsContent)}
                         ${buildTabPanel("shipping", "Shipping & Delivery", shippingContent)}
                     </div>
                 </div>
@@ -240,7 +247,7 @@ function buildProductPage(product, rootPath) {
             <div class="container">
                 <div class="section-heading">
                     <h2 class="section-title">Product Features</h2>
-                    <p class="section-subtitle">Built for premium quality, clean sourcing, and confident export supply.</p>
+                    <p class="section-subtitle">Fresh pack options designed for home use, gifting, and easy ordering.</p>
                 </div>
                 <div class="pdp-feature-grid">
                     ${product.features
@@ -263,7 +270,7 @@ function buildProductPage(product, rootPath) {
             <div class="container">
                 <div class="section-heading">
                     <h2 class="section-title">Related Products</h2>
-                    <p class="section-subtitle">Explore more premium makhana options from our collection.</p>
+                    <p class="section-subtitle">Explore more pack sizes from our Bihar makhana collection.</p>
                 </div>
                 <div class="product-grid related-product-grid">${relatedProductsMarkup}</div>
             </div>
@@ -395,7 +402,7 @@ function updateSeo(product) {
 
     metaDescription.setAttribute(
         "content",
-        `${product.shortDescription} Premium quality makhana sourced directly from Bihar wetlands.`
+        `${product.shortDescription} Fresh Bihar makhana packed for direct home delivery.`
     );
 }
 

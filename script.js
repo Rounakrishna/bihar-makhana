@@ -1,5 +1,5 @@
 import { addToCart, getCartCount, getCart, isProductInCart } from "./cart-utils.js";
-import { getCartRoute, getProductById, getProductRoute } from "./products.js";
+import { formatCurrency, getCartRoute, getProductById, getProductRoute } from "./products.js";
 
 const THEME_STORAGE_KEY = "biharMakhanaTheme";
 
@@ -208,6 +208,34 @@ function markButtonAsAdded(button) {
     }
 }
 
+function syncProductCardContent(productCard, product, rootPath) {
+    const tag = productCard.querySelector(".tag");
+    const image = productCard.querySelector(".product-image img");
+    const title = productCard.querySelector(".product-info h3");
+    const description = productCard.querySelector(".product-info p");
+    const price = productCard.querySelector(".price");
+    const addButton = productCard.querySelector(".add-cart-btn");
+
+    if (tag) tag.textContent = product.badge;
+
+    if (image) {
+        image.setAttribute("src", `${rootPath}${product.image}`);
+        image.setAttribute("alt", product.name);
+    }
+
+    if (title) title.textContent = product.name;
+    if (description) description.textContent = product.shortDescription;
+    if (price) price.textContent = formatCurrency(product.price);
+
+    if (addButton) {
+        addButton.dataset.id = product.id;
+        addButton.dataset.name = product.name;
+        addButton.dataset.price = String(product.price);
+        addButton.dataset.image = product.image;
+        addButton.setAttribute("aria-label", `Add ${product.name} to cart`);
+    }
+}
+
 function enhanceProductCards() {
     const rootPath = getRootPath();
     const cartState = getCart();
@@ -220,6 +248,8 @@ function enhanceProductCards() {
         const detailsUrl = getProductRoute(product.id, rootPath);
         const addButton = productCard.querySelector(".add-cart-btn");
         const viewButton = productCard.querySelector(".view-btn");
+
+        syncProductCardContent(productCard, product, rootPath);
 
         if (viewButton) {
             viewButton.setAttribute("href", detailsUrl);
@@ -299,7 +329,7 @@ export function createRelatedProductCard(product, rootPath) {
                 <h3>${product.name}</h3>
                 <p>${product.shortDescription}</p>
                 <div class="product-footer">
-                    <span class="price">₹${product.price}/gram</span>
+                    <span class="price">${formatCurrency(product.price)}</span>
                     <div class="product-actions">
                         <button class="add-cart-btn${isAdded ? " added" : ""}" type="button" title="Add to Cart">
                             <i class="fa-solid ${isAdded ? "fa-check" : "fa-cart-shopping"}"></i>
